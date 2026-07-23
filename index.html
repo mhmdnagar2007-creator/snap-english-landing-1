@@ -1,0 +1,613 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>snap_english_ | من أول كلمة لحد ما تشتغل بيها فريلانسر</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Aref+Ruqaa:wght@400;700&family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&family=IBM+Plex+Mono:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+  /* ============ عدّل بياناتك في قسم CONFIG داخل <script> آخر الملف ============ */
+  :root{
+    --ink:#16233D;
+    --paper:#FBF8F2;
+    --paper-soft:#F1EBDC;
+    --teal:#2F8F7E;
+    --cta:#FF6A39;        /* لون واحد ثابت لكل أزرار اتخاذ القرار في الصفحة كلها */
+    --cta-dark:#E4501F;
+    --whatsapp:#25D366;
+    --text:#22201A;
+    --muted:#6B6A5F;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{background:var(--paper); color:var(--text); font-family:'IBM Plex Sans Arabic',sans-serif; line-height:1.75; padding-bottom:0;}
+  @media (prefers-reduced-motion: reduce){*{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;}}
+  h1,h2,h3{font-family:'Aref Ruqaa',serif; font-weight:700; color:var(--ink);}
+  a{color:inherit; text-decoration:none;}
+  .wrap{max-width:1040px; margin:0 auto; padding:0 22px;}
+  img,iframe{max-width:100%;}
+
+  /* ---- CTA البارز: نفس الشكل واللون في كل مكان في الصفحة ---- */
+  .cta-btn{
+    display:inline-flex; align-items:center; justify-content:center; gap:10px;
+    background:var(--cta); color:#fff; font-weight:700; font-size:16px;
+    padding:16px 30px; border-radius:14px; border:none; cursor:pointer;
+    box-shadow:0 10px 24px rgba(255,106,57,0.35);
+    transition:transform .2s ease, box-shadow .2s ease;
+  }
+  .cta-btn:hover{transform:translateY(-3px); box-shadow:0 14px 30px rgba(255,106,57,0.45);}
+  .cta-btn.ghost{background:transparent; color:var(--ink); border:2px solid var(--ink); box-shadow:none;}
+  .cta-btn.ghost:hover{background:var(--ink); color:#fff;}
+  .cta-btn.small{padding:11px 20px; font-size:14px; border-radius:11px;}
+  .cta-btn.free{background:var(--teal); box-shadow:0 10px 24px rgba(47,143,126,0.3);}
+
+  /* ---- Header ---- */
+  header{position:sticky; top:0; z-index:50; background:rgba(251,248,242,.94); backdrop-filter:blur(8px); border-bottom:1px solid rgba(34,32,26,.08);}
+  .header-inner{display:flex; align-items:center; justify-content:space-between; padding:12px 22px;}
+  .brand{display:flex; align-items:center; gap:9px;}
+  .brand-mark{width:34px; height:34px; border-radius:50%; background:conic-gradient(from 180deg,var(--teal),var(--cta),var(--ink),var(--teal)); display:flex; align-items:center; justify-content:center;}
+  .brand-mark span{width:27px; height:27px; border-radius:50%; background:var(--paper); display:flex; align-items:center; justify-content:center; font-family:'IBM Plex Mono',monospace; font-weight:600; font-size:12px;}
+  .brand-name{font-family:'IBM Plex Mono',monospace; font-weight:600; font-size:14px;}
+  .header-links{display:flex; gap:10px; align-items:center;}
+  .icon-btn{width:32px; height:32px; border-radius:9px; display:flex; align-items:center; justify-content:center; background:var(--paper-soft); font-size:13px; transition:transform .2s;}
+  .icon-btn:hover{transform:translateY(-2px);}
+  .header-cta{background:var(--teal); color:#fff; font-weight:700; font-size:13px; padding:9px 16px; border-radius:999px;}
+
+  /* ---- Hero ---- */
+  .hero{padding:56px 22px 36px; text-align:center;}
+  .eyebrow{display:inline-flex; align-items:center; gap:8px; font-family:'IBM Plex Mono',monospace; font-size:12px; letter-spacing:1px; color:var(--teal); background:rgba(47,143,126,.1); padding:6px 16px; border-radius:999px; margin-bottom:20px;}
+  .hero h1{font-size:clamp(30px,5.4vw,50px); line-height:1.4; max-width:760px; margin:0 auto 18px;}
+  .hero h1 em{font-style:normal; color:var(--cta);}
+  .hero p.lead{font-size:17px; color:var(--muted); max-width:560px; margin:0 auto 30px;}
+  .hero-ctas{display:flex; gap:14px; justify-content:center; flex-wrap:wrap; margin-bottom:22px;}
+  .hero-badges{display:flex; gap:10px; justify-content:center; flex-wrap:wrap; margin-bottom:26px;}
+  .badge{background:#fff; border:1px solid rgba(34,32,26,.1); padding:7px 14px; border-radius:999px; font-size:12.5px; color:var(--muted);}
+
+  /* ---- stat badge (عدد العملاء) ---- */
+  .stat-badge{
+    display:inline-flex; align-items:center; gap:10px; margin:0 auto;
+    background:var(--ink); color:#fff; padding:12px 24px; border-radius:999px;
+    font-family:'IBM Plex Mono',monospace; font-size:14px; font-weight:600;
+    box-shadow:0 8px 20px rgba(22,35,61,.25);
+  }
+  .stat-badge .dot{width:9px; height:9px; border-radius:50%; background:var(--cta); animation:pulse 1.8s infinite;}
+  @keyframes pulse{0%,100%{opacity:1;} 50%{opacity:.35;}}
+
+  /* ---- divider ---- */
+  .divider{display:flex; align-items:center; gap:16px; padding:8px 22px 0; max-width:1040px; margin:0 auto;}
+  .divider .line{flex:1; height:1px; background:repeating-linear-gradient(90deg,rgba(34,32,26,.22) 0 6px,transparent 6px 12px);}
+  .divider .label{font-family:'IBM Plex Mono',monospace; font-size:11.5px; letter-spacing:1.5px; color:var(--muted);}
+
+  /* ---- Ladder (سلّم المستويات) ---- */
+  .ladder-section{padding:38px 22px 10px;}
+  .ladder-title{text-align:center; font-family:'IBM Plex Mono',monospace; font-size:12px; letter-spacing:1px; color:var(--muted); margin-bottom:24px;}
+  .ladder{display:flex; align-items:flex-end; justify-content:center; gap:10px; max-width:640px; margin:0 auto; padding:0 6px;}
+  .rung{
+    flex:1; text-align:center; border-radius:12px 12px 0 0; padding:14px 6px;
+    font-family:'IBM Plex Mono',monospace; font-weight:700; font-size:14px;
+    display:flex; flex-direction:column; justify-content:flex-end; gap:6px;
+    transition:transform .2s;
+  }
+  .rung:hover{transform:translateY(-4px);}
+  .rung small{font-family:'IBM Plex Sans Arabic',sans-serif; font-weight:500; font-size:11px; display:block; opacity:.85;}
+  .rung.r1{height:66px; background:linear-gradient(180deg,#eaf5f2,#dbeee8); border:1px solid rgba(47,143,126,.35); color:#1f6a5c;}
+  .rung.r2{height:88px; background:linear-gradient(180deg,#e2f0eb,#cde7de); border:1px solid rgba(47,143,126,.45); color:#195b4f;}
+  .rung.r3{height:112px; background:linear-gradient(180deg,#f6ecdc,#f0dcc0); border:1px solid rgba(255,106,57,.3); color:#8a5a1f;}
+  .rung.r4{height:138px; background:linear-gradient(180deg,#fbe3d6,#f7ceb8); border:1px solid rgba(255,106,57,.45); color:#b1481e;}
+  .rung.r5{height:164px; background:linear-gradient(180deg,#233256,var(--ink)); border:1px solid var(--ink); color:#fff;}
+
+  /* ---- Benefits (منافع مش مميزات) ---- */
+  .benefits{padding:56px 22px;}
+  .benefits h2{text-align:center; font-size:clamp(24px,3.4vw,32px); margin-bottom:40px;}
+  .benefit-grid{display:grid; grid-template-columns:repeat(auto-fit,minmax(230px,1fr)); gap:24px;}
+  .benefit-card{background:#fff; border-radius:16px; padding:26px; border:1px solid rgba(34,32,26,.07);}
+  .benefit-card .icon{font-size:26px; margin-bottom:14px;}
+  .benefit-card h3{font-size:19px; margin-bottom:8px;}
+  .benefit-card p{font-size:14px; color:var(--muted);}
+
+  /* ---- Free product ---- */
+  .free-block{padding:20px 22px 56px;}
+  .free-card{
+    max-width:760px; margin:0 auto; background:linear-gradient(135deg,var(--teal),#256b5f);
+    border-radius:22px; padding:38px 30px; text-align:center; color:#fff;
+  }
+  .free-card .tag{display:inline-block; background:rgba(255,255,255,.18); padding:5px 16px; border-radius:999px; font-family:'IBM Plex Mono',monospace; font-size:12px; margin-bottom:16px;}
+  .free-card h2{color:#fff; font-size:clamp(22px,3.2vw,28px); margin-bottom:10px;}
+  .free-card p{color:#DCEFEA; font-size:15px; max-width:480px; margin:0 auto 24px;}
+
+  /* ---- Track headers (مسار اللغة / مسار الفريلانسنج) ---- */
+  .track-header{padding:34px 22px 8px; max-width:1040px; margin:0 auto;}
+  .track-header h2{font-size:clamp(22px,3vw,28px); margin-bottom:6px;}
+  .track-header p.sub{color:var(--muted); font-size:14px; margin:0;}
+  .track-tag{display:inline-block; font-family:'IBM Plex Mono',monospace; font-size:11.5px; font-weight:700; padding:4px 12px; border-radius:999px; margin-bottom:10px;}
+  .track-tag.lang{background:rgba(47,143,126,.12); color:var(--teal);}
+  .track-tag.freelance{background:rgba(255,106,57,.12); color:var(--cta-dark);}
+
+  /* ---- Products ---- */
+  .products{padding:16px 22px 20px;}
+  .product-grid{display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); gap:20px; max-width:1040px; margin:0 auto;}
+  .product-card{background:#fff; border-radius:18px; padding:24px; display:flex; flex-direction:column; gap:12px; border-top:4px solid var(--cta); box-shadow:0 8px 24px rgba(22,35,61,.06); transition:transform .2s, box-shadow .2s;}
+  .product-card:hover{transform:translateY(-3px); box-shadow:0 12px 28px rgba(22,35,61,.1);}
+  .product-card .level{font-family:'IBM Plex Mono',monospace; font-size:11px; font-weight:700; color:#fff; background:var(--teal); display:inline-block; padding:3px 10px; border-radius:999px; width:fit-content;}
+  .product-card .pname{font-size:19px;}
+  .product-card .pbenefit{font-size:14px; color:var(--muted); flex:1;}
+  .product-card ul{list-style:none; display:flex; flex-direction:column; gap:8px; font-size:13.5px; color:var(--text);}
+  .product-card ul li{display:flex; gap:8px; align-items:flex-start;}
+  .product-card ul li::before{content:"✓"; color:var(--teal); font-weight:700; flex-shrink:0;}
+  .card-footer{display:flex; align-items:center; justify-content:space-between; margin-top:4px; padding-top:14px; border-top:1px solid rgba(34,32,26,.08);}
+  .price{font-family:'IBM Plex Mono',monospace; font-weight:700; font-size:19px; color:var(--ink);}
+  .price small{font-size:11px; color:var(--muted); font-weight:400;}
+  .add-btn{background:transparent; border:2px solid var(--teal); color:var(--teal); font-family:'IBM Plex Sans Arabic',sans-serif; font-weight:700; font-size:13px; padding:9px 18px; border-radius:11px; cursor:pointer; transition:all .2s;}
+  .add-btn:hover{background:rgba(47,143,126,.08);}
+  .add-btn.added{background:var(--teal); color:#fff;}
+
+  /* ---- Bundle ---- */
+  .bundle-section{padding:26px 22px 56px;}
+  .bundle-card{
+    max-width:900px; margin:0 auto; background:linear-gradient(135deg,var(--ink),#233256);
+    border-radius:22px; padding:36px 30px; display:flex; flex-wrap:wrap; gap:24px;
+    align-items:center; justify-content:space-between; color:#fff;
+    box-shadow:0 14px 34px rgba(22,35,61,.28);
+  }
+  .bundle-card h3{color:#fff; font-size:22px; margin-bottom:8px;}
+  .bundle-card p{color:#C7D0E0; font-size:14px; max-width:420px;}
+  .save-tag{color:var(--cta); font-family:'IBM Plex Mono',monospace; font-weight:700; font-size:13px; margin-top:10px; display:block;}
+  .bundle-price{text-align:center;}
+  .bundle-price .old{font-size:13px; color:#93A0BE; text-decoration:line-through; font-family:'IBM Plex Mono',monospace;}
+  .bundle-price .new{font-family:'IBM Plex Mono',monospace; font-size:32px; font-weight:700; color:var(--cta);}
+  .bundle-btn{background:var(--cta); color:#fff; border:none; padding:13px 26px; border-radius:999px; font-family:'IBM Plex Sans Arabic',sans-serif; font-weight:700; font-size:14px; cursor:pointer; margin-top:10px; box-shadow:0 10px 22px rgba(255,106,57,.3); transition:transform .2s;}
+  .bundle-btn:hover{transform:translateY(-2px);}
+  .bundle-btn.added{background:var(--cta-dark);}
+
+  /* ---- payment / trust ---- */
+  .payment{background:var(--paper-soft); padding:56px 22px;}
+  .payment h2{text-align:center; font-size:clamp(22px,3.2vw,28px); margin-bottom:34px;}
+  .steps{display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:20px; max-width:900px; margin:0 auto 30px;}
+  .step{background:#fff; border-radius:16px; padding:24px; text-align:center;}
+  .step .num{width:34px; height:34px; border-radius:50%; background:var(--ink); color:#fff; display:flex; align-items:center; justify-content:center; margin:0 auto 12px; font-family:'IBM Plex Mono',monospace; font-weight:600;}
+  .step h3{font-size:16.5px; margin-bottom:6px;}
+  .step p{font-size:13.5px; color:var(--muted);}
+  .vodafone-box{
+    max-width:420px; margin:0 auto; background:var(--ink); color:#fff; border-radius:16px;
+    padding:20px 24px; text-align:center; font-family:'IBM Plex Mono',monospace;
+  }
+  .vodafone-box .label{font-size:12px; color:#AEB9CF; margin-bottom:6px;}
+  .vodafone-box .num{font-size:22px; font-weight:600; letter-spacing:1px;}
+  .reassure{text-align:center; max-width:520px; margin:30px auto 0; font-size:14px; color:var(--muted);}
+
+  /* ---- testimonials (chat-bubble style) ---- */
+  .testimonials{padding:56px 22px;}
+  .testimonials h2{text-align:center; font-size:clamp(24px,3.4vw,32px); margin-bottom:8px;}
+  .testimonials p.sub{text-align:center; color:var(--muted); font-size:14.5px; margin-bottom:36px;}
+  .chat-grid{display:grid; grid-template-columns:repeat(auto-fit,minmax(210px,1fr)); gap:16px; max-width:920px; margin:0 auto;}
+  .chat-bubble{
+    background:#DCF8C6; border-radius:14px 14px 4px 14px; padding:16px 18px;
+    font-size:14.5px; color:#1a1a1a; position:relative; box-shadow:0 4px 12px rgba(0,0,0,.05);
+  }
+  .chat-bubble .heart{margin-inline-start:4px;}
+
+  /* ---- FAQ ---- */
+  .faq{padding:20px 22px 56px; max-width:760px; margin:0 auto;}
+  .faq h2{text-align:center; font-size:clamp(22px,3.2vw,28px); margin-bottom:30px;}
+  details{background:#fff; border-radius:14px; padding:16px 20px; margin-bottom:12px; border:1px solid rgba(34,32,26,.07);}
+  summary{cursor:pointer; font-weight:600; font-size:15px; list-style:none;}
+  summary::-webkit-details-marker{display:none;}
+  summary::before{content:"+ "; color:var(--cta); font-weight:700;}
+  details[open] summary::before{content:"– ";}
+  details p{margin-top:10px; font-size:14px; color:var(--muted);}
+
+  /* ---- final CTA ---- */
+  .final-cta{background:var(--ink); padding:60px 22px; text-align:center;}
+  .final-cta h2{color:#fff; font-size:clamp(24px,3.6vw,34px); margin-bottom:14px;}
+  .final-cta p{color:#AEB9CF; font-size:15px; margin-bottom:26px; max-width:460px; margin-left:auto; margin-right:auto;}
+
+  footer{background:var(--ink); color:#6B7A99; text-align:center; padding:22px; font-family:'IBM Plex Mono',monospace; font-size:12px; border-top:1px solid rgba(255,255,255,.08); margin-bottom:0;}
+
+  /* ---- sticky cart bar ---- */
+  .cart-bar{
+    position:fixed; bottom:0; left:0; right:0; z-index:100;
+    background:var(--ink); border-top:1px solid rgba(255,255,255,.1);
+    box-shadow:0 -8px 30px rgba(0,0,0,.25);
+    padding:14px 22px; display:none; align-items:center; justify-content:space-between; gap:14px;
+  }
+  .cart-bar.show{display:flex;}
+  body.cart-visible{padding-bottom:86px;}
+  .cart-info{font-size:13px; color:#C7D0E0;}
+  .cart-info .amount{font-family:'IBM Plex Mono',monospace; font-size:19px; font-weight:700; color:var(--cta); margin:0 4px;}
+  .cart-info .note{color:#8fd6c4; font-size:11.5px; display:block; margin-top:2px;}
+  .cart-cta{
+    background:var(--whatsapp); color:#08380f; font-weight:800; font-size:14px;
+    padding:12px 22px; border-radius:999px; display:flex; align-items:center; gap:8px;
+    white-space:nowrap;
+  }
+  @media(max-width:640px){
+    .cart-bar{flex-direction:column; align-items:stretch; text-align:center;}
+    .cart-cta{justify-content:center;}
+    .bundle-card{flex-direction:column; text-align:center; align-items:center;}
+    .bundle-card p{max-width:100%;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <div class="brand">
+      <div class="brand-mark"><span>ge</span></div>
+      <div class="brand-name">snap_english_</div>
+    </div>
+    <div class="header-links">
+      <a class="header-cta" href="#products">شوف الباقات</a>
+    </div>
+  </div>
+</header>
+
+<!-- ================= HERO ================= -->
+<section class="hero wrap">
+  <div class="eyebrow">أكتر من <span id="eyebrowCount">300</span> طالب اتعلموا معانا</div>
+  <h1>مش عايز تتعلم <em>قواعد أكتر</em>،<br>عايز تتكلم وتتفاهم من غير ما تتلعثم</h1>
+  <p class="lead">خد أول خطوة مجانًا وجرّب بنفسك قبل أي حاجة تانية. لو حسيت إنها فعلاً بتفرق معاك، هنكون هنا لما تحب تكمل — لحد ما توصل تشتغل بالإنجليزي فريلانسر باحتراف.</p>
+  <div class="hero-ctas">
+    <a class="cta-btn free" id="free-cta-hero" href="#" target="_blank" rel="noopener">🎁 خد الهدية المجانية الأول</a>
+    <a class="cta-btn ghost" href="#products">شوف الباقات لما تكون جاهز</a>
+  </div>
+  <div class="hero-badges">
+    <span class="badge">10 منتجات رقمية</span>
+    <span class="badge">وصول فوري بعد الدفع</span>
+    <span class="badge">التنسيق والدفع عبر واتساب</span>
+  </div>
+  <div class="stat-badge"><span class="dot"></span> <span id="statBadgeText">+300 عميل حققوا نتيجة ملموسة</span></div>
+</section>
+
+<!-- ================= LADDER ================= -->
+<section class="ladder-section">
+  <div class="ladder-title">سلّم المستويات — كل درجة ليها أدوات مخصوصة ليها في الباقات تحت</div>
+  <div class="ladder">
+    <div class="rung r1">A1<small>مبتدئ</small></div>
+    <div class="rung r2">A2<small>أساسي</small></div>
+    <div class="rung r3">B1<small>متوسط</small></div>
+    <div class="rung r4">B2<small>فوق المتوسط</small></div>
+    <div class="rung r5">C1<small>محترف</small></div>
+  </div>
+</section>
+
+<!-- ================= FREE PRODUCT ================= -->
+<section class="free-block">
+  <div class="free-card">
+    <span class="tag">🎁 هدية مجانية بالكامل، من غير أي شروط</span>
+    <h2>ابدأ بالمجاني، وقرر بعدين</h2>
+    <p>خد نسختك من "100 جملة يومية" مجانًا. مفيش رقم كارت ولا التزام، إحنا بس عايزينك تشوف بنفسك إنها بتفرق قبل ما تفكر في أي حاجة تانية.</p>
+    <a class="cta-btn free" id="free-cta" href="#" target="_blank" rel="noopener">🎁 خد النسخة المجانية دلوقتي</a>
+  </div>
+</section>
+
+<div class="divider"><span class="label">ليه تختارنا</span><div class="line"></div></div>
+
+<!-- ================= BENEFITS ================= -->
+<section class="benefits wrap">
+  <h2>مش هتقرأ إنجليزي، هتعيشه</h2>
+  <div class="benefit-grid">
+    <div class="benefit-card">
+      <div class="icon">🗣️</div>
+      <h3>تتكلم من غير خوف</h3>
+      <p>جمل ومحادثات جاهزة تستخدمها فورًا في حياتك اليومية، من غير ما تقف تدور على كلمة.</p>
+    </div>
+    <div class="benefit-card">
+      <div class="icon">👂</div>
+      <h3>تفهم من أول مرة</h3>
+      <p>تدرّب على سماع الإنجليزي بسرعته الطبيعية، مش الفيديوهات البطيئة اللي مش هتفيدك في الواقع.</p>
+    </div>
+    <div class="benefit-card">
+      <div class="icon">💼</div>
+      <h3>تشتغل مع عملاء أجانب بثقة</h3>
+      <p>إنجليزي الشغل والفريلانسينج اللي يخليك تتعامل باحترافية في أي رسالة أو مكالمة.</p>
+    </div>
+    <div class="benefit-card">
+      <div class="icon">📈</div>
+      <h3>خطة واضحة، مش تشتت</h3>
+      <p>خطوة بخطوة توصلك من مستواك الحالي لهدفك، من غير ما تضيع وقتك بين مصادر مبعثرة.</p>
+    </div>
+  </div>
+</section>
+
+<div class="divider" id="products"><span class="label">الباقات</span><div class="line"></div></div>
+
+<!-- ================= PRODUCTS: مسار اللغة ================= -->
+<div class="track-header wrap">
+  <span class="track-tag lang">مسار اللغة</span>
+  <h2>ابني إنجليزيك خطوة خطوة</h2>
+  <p class="sub">اختار باقة واحدة أو أكتر، أو خد الباقة الشاملة تحت بسعر أوفر بكتير</p>
+</div>
+<section class="products">
+  <div class="product-grid" id="langGrid"></div>
+</section>
+
+<!-- ================= PRODUCTS: مسار الفريلانسنج ================= -->
+<div class="track-header wrap">
+  <span class="track-tag freelance">مسار الفريلانسنج</span>
+  <h2>حوّل الإنجليزي لدخل فعلي</h2>
+  <p class="sub">إنجليزي كويس من غير ما تعرف تشتغل بيه مش كفاية — الباقتين دول يوصلوك للاحتراف الفعلي كفريلانسر</p>
+</div>
+<section class="products">
+  <div class="product-grid" id="freelanceGrid"></div>
+</section>
+
+<!-- ================= BUNDLE ================= -->
+<section class="bundle-section">
+  <div class="bundle-card" id="bundleCard">
+    <div>
+      <h3>🎁 الباقة الشاملة — كل الباقات مع بعض</h3>
+      <p>كل حاجة في مسار اللغة ومسار الفريلانسنج مع بعض، بسعر واحد أوفر بكتير من شرائهم لوحدهم.</p>
+      <span class="save-tag" id="saveTag"></span>
+    </div>
+    <div class="bundle-price">
+      <div class="old" id="bundleOld"></div>
+      <div class="new" id="bundleNew"></div>
+      <button class="bundle-btn" id="bundleBtn">اختار الباقة كاملة</button>
+    </div>
+  </div>
+</section>
+
+<!-- ================= PAYMENT / TRUST ================= -->
+<section class="payment">
+  <div class="wrap">
+    <h2>الطلب بسيط وسريع، وإحنا معاك خطوة بخطوة</h2>
+    <div class="steps">
+      <div class="step"><div class="num">١</div><h3>اختار باقاتك</h3><p>دوس "أضف للطلب" على أي باقة، أو اختار الباقة الشاملة</p></div>
+      <div class="step"><div class="num">٢</div><h3>ابعت طلبك على واتساب</h3><p>هيبعتلنا تفاصيل طلبك أوتوماتيك من زرار العربية تحت</p></div>
+      <div class="step"><div class="num">٣</div><h3>اتفق على طريقة الدفع</h3><p>هنرسلك تفاصيل الدفع المناسبة وابعتلنا تأكيد التحويل</p></div>
+      <div class="step"><div class="num">٤</div><h3>يوصلك المنتج فورًا</h3><p>من غير أي انتظار طويل</p></div>
+    </div>
+    <p class="reassure">أي استفسار قبل أو بعد الدفع، إحنا موجودين على واتساب طول الوقت. راحتك وثقتك في اللي بتاخده هي الأهم بالنسبالنا.</p>
+  </div>
+</section>
+
+<div class="divider"><span class="label">تجارب حقيقية</span><div class="line"></div></div>
+
+<!-- ================= TESTIMONIALS ================= -->
+<section class="testimonials wrap">
+  <h2>كلام عملائنا، مش كلامنا</h2>
+  <p class="sub">رسايل حقيقية وصلتنا على واتساب من ناس جربوا فعلاً</p>
+  <div class="chat-grid" id="chatGrid"></div>
+</section>
+
+<!-- ================= FAQ ================= -->
+<section class="faq">
+  <h2>أسئلة بتتسأل كتير</h2>
+  <details>
+    <summary>الدفع آمن؟</summary>
+    <p>أيوه، بنتفق معاك على طريقة الدفع المناسبة على واتساب، وبعد ما تبعت تأكيد التحويل بنأكدلك ونبعتلك المنتج على طول. مفيش أي خطوات معقدة.</p>
+  </details>
+  <details>
+    <summary>هوصل المنتج إمتى بعد الدفع؟</summary>
+    <p>فور ما نستلم تأكيد التحويل بيوصلك المنتج على واتساب في نفس المحادثة، من غير انتظار.</p>
+  </details>
+  <details>
+    <summary>إزاي أطلب أكتر من باقة مع بعض؟</summary>
+    <p>دوس "أضف للطلب" على كل باقة عايزها، هيظهرلك شريط تحت فيه الإجمالي، ودوسة واحدة على "اطلب على واتساب" وهتتبعت كل تفاصيل طلبك مرة واحدة.</p>
+  </details>
+  <details>
+    <summary>لو حصلت مشكلة في التحويل أو محتاج مساعدة؟</summary>
+    <p>كلمنا فورًا على نفس رقم الواتساب وهنحل معاك أي مشكلة أول بأول، إحنا معاك لحد ما توصل للنتيجة اللي عايزها.</p>
+  </details>
+  <details>
+    <summary>أنا مبتدئ خالص، هل المنتجات هتناسبني؟</summary>
+    <p>أكيد، عندنا باقات لكل المستويات من الصفر لحد الاحتراف، وممكن تكلمنا على واتساب نساعدك تختار المناسب لمستواك بالظبط.</p>
+  </details>
+</section>
+
+<!-- ================= FINAL CTA ================= -->
+<section class="final-cta">
+  <h2>لسه مترددّ؟ اتكلم معانا الأول</h2>
+  <p>مش لازم تقرر دلوقتي. اسألنا عن أي حاجة، أو خد الهدية المجانية وشوف بنفسك، وإحنا موجودين لما تكون جاهز.</p>
+  <a class="cta-btn" id="finalCta" href="#" target="_blank" rel="noopener">💬 اسألنا على واتساب</a>
+</section>
+
+<footer>
+  <div>snap_english_ © 2026</div>
+</footer>
+
+<!-- ================= STICKY CART ================= -->
+<div class="cart-bar" id="cartBar">
+  <div class="cart-info">
+    <span id="cartCount">0 باقات مختارة</span>
+    <span class="amount" id="cartTotal">$0</span>
+    <span class="note" id="cartNote"></span>
+  </div>
+  <a href="#" id="cartCta" class="cart-cta" target="_blank" rel="noopener">💬 اطلب على واتساب</a>
+</div>
+
+<script>
+/* ================== CONFIG — عدّل بياناتك هنا ================== */
+const CONFIG = {
+  whatsappNumber: "96181939104",      // رقم الواتساب الأساسي للطلب والتواصل
+  customerCount: "300+",              // عدّل الرقم الحقيقي لعدد عملائك كل فترة
+  bundlePrice: 49,                    // سعر الباقة الشاملة
+
+  freeProduct: {
+    name: "100 جملة يومية",
+    waMessage: "أهلاً، عايز أطلب النسخة المجانية من (100 جملة يومية) 🎁"
+  },
+
+  products: [
+    { id:"a1a2", track:"lang", level:"A1-A2", name:"200 كلمة أساسية", price:7,
+      benefit:"ابدأ من الصفر بثقة، من غير تلعثم ولا خوف من الغلط",
+      points:["200 كلمة أساسية هتحتاجها في أي محادثة","أسلوب بسيط من غير تعقيد قواعدي","مناسبة تمامًا لو بتبدأ من الصفر"] },
+    { id:"b1b2", track:"lang", level:"B1-B2", name:"200 كلمة متوسطة", price:7,
+      benefit:"توسّع حصيلتك وتتعبّر عن نفسك بدقة أكتر في الشغل والمواقف اليومية",
+      points:["200 كلمة للمستوى المتوسط","تركيز على كلمات الاستخدام العملي","مناسبة لمرحلة الانتقال لـ B2"] },
+    { id:"c1", track:"lang", level:"C1", name:"500+ كلمة متقدمة", price:10,
+      benefit:"تتعامل مع عملاء أجانب وكلام الشغل باحترافية كاملة",
+      points:["500+ كلمة من مستوى المحترفين","مناسبة للشغل والدراسة","أكبر باقة مفردات في المجموعة"] },
+    { id:"dialogues", track:"lang", level:"B1", name:"26 محادثة يومية عملية", price:9,
+      benefit:"مواقف حقيقية بتقابلك كل يوم، بحوارات جاهزة تتمرن عليها",
+      points:["26 حوار بمواقف حياتية مختلفة","تدريب مباشر على الكلام مش الحفظ بس","يناسب اللي عايز يتكلم بثقة"] },
+    { id:"listening", track:"lang", level:"كل المستويات", name:"تدريب الاستماع", price:9,
+      benefit:"تتدرّب على سماع الإنجليزي بسرعته الطبيعية عشان تفهم من أول مرة",
+      points:["تدريبات استماع تدريجية الصعوبة","تعوّد ودنك على اللكنات الطبيعية","مفيدة لأي مستوى من A2 لـ C1"] },
+    { id:"reading", track:"lang", level:"كل المستويات", name:"معمل القراءة", price:9,
+      benefit:"تفهم أي نص من غير ما تترجم كل جملة في دماغك",
+      points:["نصوص متدرجة الصعوبة","تدريب على الفهم السريع","يقوّي المفردات بشكل غير مباشر"] },
+    { id:"plan", track:"lang", level:"B1 → C1", name:"خطة الـ60 يوم الشاملة", price:15,
+      benefit:"خطة يوم بيوم توصلك من متوسط لمحترف، بدل ما تتوه بين المصادر",
+      points:["خطة يومية واضحة من B1 لـ C1","تجمع بين مفردات، استماع، قراءة، وكلام","متابعة تقدمك خطوة بخطوة"] },
+    { id:"native", track:"lang", level:"B2-C1", name:"100 جملة الأمريكان اليومية", price:7,
+      benefit:"جمل حقيقية بيستخدمها الأمريكان في كلامهم العادي، تخليك تفهم وتتكلم بطلاقة أسرع",
+      points:["100 جملة تعبيرية شائعة","نتيجة ملموسة خلال أسبوعين","مناسبة لمن عنده أساس ومحتاج طلاقة"] },
+    { id:"ch6", track:"freelance", level:"Chapter 6", name:"الاحترافية الكاملة", price:12,
+      benefit:"إزاي تتعامل مع العميل الأجنبي بشكل محترف من أول رسالة لحد التسليم",
+      points:["أسلوب التواصل الاحترافي مع العملاء","إدارة الوقت والمواعيد النهائية","بناء سمعة تجيبلك عملاء تكرار"] },
+    { id:"ch7", track:"freelance", level:"Chapter 7", name:"دليل المستقل العربي", price:12,
+      benefit:"الإنجليزي اللي فعلاً محتاجه في شغل الفريلانسنج",
+      points:["مصطلحات وصياغات شغل جاهزة","كتابة عروض أسعار مقنعة بالإنجليزي","التعامل مع مقابلات ومفاوضات العملاء"] }
+  ],
+
+  testimonials: [
+    "فتح يا فندم جميل جدا، تسلم ايدك ❤️",
+    "جزاك الله ألف خير وجعلها في ميزان حسناتك",
+    "الملف فتح معايا كويس والملف ممتاز 👍",
+    "ساعدتني كتير 🙏",
+    "الملفات كتييير حلوين ومرتبين",
+    "مفيد جدا، الله يجزيك خير ❤️",
+    "تحفة ❤️",
+    "شكرا جدا ❤️"
+  ]
+};
+/* ================================================================ */
+
+function waLink(msg){
+  return `https://wa.me/${CONFIG.whatsappNumber}?text=${encodeURIComponent(msg)}`;
+}
+
+document.getElementById('free-cta-hero').href = waLink(CONFIG.freeProduct.waMessage);
+document.getElementById('finalCta').href = waLink("أهلاً، حابب أعرف أكتر قبل ما أقرر");
+document.getElementById('free-cta').href = waLink(CONFIG.freeProduct.waMessage);
+document.getElementById('eyebrowCount').textContent = CONFIG.customerCount;
+document.getElementById('statBadgeText').textContent = `+${CONFIG.customerCount.replace('+','')} عميل حققوا نتيجة ملموسة`;
+
+/* ---- render product cards ---- */
+const langGrid = document.getElementById('langGrid');
+const freelanceGrid = document.getElementById('freelanceGrid');
+
+function buildCard(p){
+  const card = document.createElement('div');
+  card.className = 'product-card';
+  card.dataset.id = p.id;
+  card.dataset.price = p.price;
+  card.innerHTML = `
+    <span class="level">${p.level}</span>
+    <div class="pname">${p.name}</div>
+    <div class="pbenefit">${p.benefit}</div>
+    <ul>${p.points.map(pt=>`<li>${pt}</li>`).join('')}</ul>
+    <div class="card-footer">
+      <div class="price">$${p.price}</div>
+      <button class="add-btn">أضف للطلب</button>
+    </div>
+  `;
+  return card;
+}
+
+CONFIG.products.filter(p=>p.track==='lang').forEach(p=> langGrid.appendChild(buildCard(p)));
+CONFIG.products.filter(p=>p.track==='freelance').forEach(p=> freelanceGrid.appendChild(buildCard(p)));
+
+/* ---- bundle price display ---- */
+const fullTotal = CONFIG.products.reduce((s,p)=>s+p.price,0);
+document.getElementById('bundleOld').textContent = `$${fullTotal}`;
+document.getElementById('bundleNew').textContent = `$${CONFIG.bundlePrice}`;
+document.getElementById('saveTag').textContent = `توفير أكتر من $${fullTotal - CONFIG.bundlePrice}`;
+
+/* ---- cart logic ---- */
+const cards = Array.from(document.querySelectorAll('.product-card'));
+const bundleBtn = document.getElementById('bundleBtn');
+const cartBar = document.getElementById('cartBar');
+const cartCount = document.getElementById('cartCount');
+const cartTotal = document.getElementById('cartTotal');
+const cartNote = document.getElementById('cartNote');
+const cartCta = document.getElementById('cartCta');
+
+let selected = new Set();
+let bundleMode = false;
+
+function individualSum(){
+  let sum = 0;
+  selected.forEach(id => {
+    const p = CONFIG.products.find(x => x.id === id);
+    if(p) sum += p.price;
+  });
+  return sum;
+}
+
+function productName(id){
+  const p = CONFIG.products.find(x => x.id === id);
+  return p ? p.name : id;
+}
+
+function render(){
+  cards.forEach(card => {
+    const btn = card.querySelector('.add-btn');
+    const isSel = bundleMode || selected.has(card.dataset.id);
+    btn.classList.toggle('added', isSel);
+    btn.textContent = isSel ? "✓ مضاف" : "أضف للطلب";
+  });
+  bundleBtn.classList.toggle('added', bundleMode);
+  bundleBtn.textContent = bundleMode ? "✓ الباقة مختارة" : "اختار الباقة كاملة";
+
+  const count = bundleMode ? CONFIG.products.length : selected.size;
+  const rawSum = bundleMode ? CONFIG.bundlePrice : individualSum();
+  const wouldBeBundleCheaper = !bundleMode && selected.size >= 5 && individualSum() > CONFIG.bundlePrice;
+
+  if(count === 0){
+    cartBar.classList.remove('show');
+    document.body.classList.remove('cart-visible');
+    return;
+  }
+  cartBar.classList.add('show');
+  document.body.classList.add('cart-visible');
+  cartCount.textContent = bundleMode ? `الباقة الشاملة (${CONFIG.products.length} منتجات) —` : `${count} باقة مختارة —`;
+  cartTotal.textContent = `$${rawSum}`;
+  cartNote.textContent = wouldBeBundleCheaper ? "💡 الباقة الشاملة أرخص لك — جرّبها!" : "";
+
+  let items, total;
+  if(bundleMode){
+    items = "الباقة الشاملة (كل الباقات)";
+    total = CONFIG.bundlePrice;
+  } else {
+    items = Array.from(selected).map(id => `- ${productName(id)}`).join('\n');
+    total = rawSum;
+  }
+  const msg = `مرحبا، عايز اطلب:\n${items}\n\nالإجمالي: $${total}\nممكن تبعتولي طريقة الدفع المتاحة؟`;
+  cartCta.href = waLink(msg);
+}
+
+cards.forEach(card => {
+  card.querySelector('.add-btn').addEventListener('click', () => {
+    if(bundleMode) return;
+    const id = card.dataset.id;
+    if(selected.has(id)) selected.delete(id);
+    else selected.add(id);
+    render();
+  });
+});
+
+bundleBtn.addEventListener('click', () => {
+  bundleMode = !bundleMode;
+  if(bundleMode) selected.clear();
+  render();
+});
+
+render();
+
+/* ---- testimonials ---- */
+const chatGrid = document.getElementById('chatGrid');
+CONFIG.testimonials.forEach(t=>{
+  const bubble = document.createElement('div');
+  bubble.className = 'chat-bubble';
+  bubble.textContent = t;
+  chatGrid.appendChild(bubble);
+});
+</script>
+
+</body>
+</html>
